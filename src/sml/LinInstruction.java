@@ -14,10 +14,10 @@ public class LinInstruction extends Instruction {
         super(label, opcode);
     }
 
-    public LinInstruction(String label, int register, int value) {
+    public LinInstruction(String label, String register, String value) {
         super(label, "lin");
-        this.register = register;
-        this.value = value;
+        this.register = Integer.parseInt(register);
+        this.value = Integer.parseInt(value);
 
     }
 

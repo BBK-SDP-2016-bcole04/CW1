@@ -12,11 +12,11 @@ public class SubInstruction extends Instruction {
         super(l, op);
     }
 
-    public SubInstruction(String label, int result, int op1, int op2) {
+    public SubInstruction(String label, String result, String op1, String op2) {
         this(label, "sub");
-        this.result = result;
-        this.op1 = op1;
-        this.op2 = op2;
+        this.result = Integer.parseInt(result);
+        this.op1 = Integer.parseInt(op1);
+        this.op2 = Integer.parseInt(op2);
     }
 
     @Override

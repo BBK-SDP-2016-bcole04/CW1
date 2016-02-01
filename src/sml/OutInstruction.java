@@ -7,19 +7,20 @@ public class OutInstruction extends Instruction {
     private int register;
     private int val;
 
-    public OutInstruction(String label, String opcode) {
+   /* public OutInstruction(String label, String opcode) {
         super(label, opcode);
     }
-
-    public OutInstruction(String label, int register) {
+*/
+    public OutInstruction(String label, String register) {
         super(label, "out");
-        this.register = register;
+        this.register = Integer.parseInt(register);
 
     }
 
     @Override
     public void execute(Machine m) {
         val = m.getRegisters().getRegister(register);
+        System.out.println("The value of register " + register + " is " + val);
     }
 
     @Override

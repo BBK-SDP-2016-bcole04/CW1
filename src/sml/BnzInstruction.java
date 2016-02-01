@@ -12,9 +12,9 @@ public class BnzInstruction extends Instruction {
         super(l, op);
     }
 
-    public BnzInstruction(String label, int reg, String lab) {
+    public BnzInstruction(String label, String reg, String lab) {
         this(label, "bnz");
-        this.reg = reg;
+        this.reg = Integer.parseInt(reg);
         this.lab = lab;
     }
 
