@@ -2,6 +2,7 @@ package sml;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
@@ -87,34 +88,122 @@ public class Translator {
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
-                return new AddInstruction(label, r, s1, s2);
+                //    return new AddInstruction(label, r, s1, s2);
+                    try {
+                        return (AddInstruction) Class.forName("sml.AddInstruction")
+                                .getConstructor(String.class, int.class, int.class, int.class)
+                                .newInstance(label,r,s1,s2);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
             case "lin":
                 r = scanInt();
                 s1 = scanInt();
-                return new LinInstruction(label, r, s1);
+                //    return new LinInstruction(label, r, s1);
+                    try {
+                        return (LinInstruction) Class.forName("sml.LinInstruction")
+                                .getConstructor(String.class, int.class, int.class)
+                                .newInstance(label,r,s1);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
             case "mul":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
-                return new MulInstruction(label, r, s1, s2);
+                //    return new MulInstruction(label, r, s1, s2);
+                    try {
+                        return (MulInstruction) Class.forName("sml.MulInstruction")
+                                .getConstructor(String.class, int.class, int.class, int.class)
+                                .newInstance(label,r,s1,s2);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
             case "sub":
                 r = scanInt();
                 s1 = scanInt();
                 s2 = scanInt();
-                return new SubInstruction(label, r, s1, s2);
+                //   return new SubInstruction(label, r, s1, s2);
+                    try {
+                        return (SubInstruction) Class.forName("sml.SubInstruction")
+                                .getConstructor(String.class, int.class, int.class, int.class)
+                                .newInstance(label,r,s1,s2);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
             case "bnz":
                 r = scanInt();
                 lab = scan();
-                return new BnzInstruction(label, r, lab);
+                //   return new BnzInstruction(label, r, lab);
+                    try {
+                        return (BnzInstruction) Class.forName("sml.BnzInstruction")
+                                .getConstructor(String.class, int.class, String.class)
+                                .newInstance(label,r,lab);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
             case "out":
                 r = scanInt();
-                return new OutInstruction(label, r);
+                //   return new OutInstruction(label, r);
+                    try {
+                        return (OutInstruction) Class.forName("sml.OutInstruction")
+                                .getConstructor(String.class, int.class)
+                                .newInstance(label,r);
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+            }
+                return null;
         }
 
-        // You will have to write code here for the other instructions.
-
-        return null;
-    }
 
     /*
      * Return the first word of line and remove it from line. If there is no
